@@ -1,0 +1,38 @@
+import { Meta, Source } from '@storybook/addon-docs/blocks';
+import packageName from '../../.storybook/helpers/mdx-packageJson';
+import dedent from 'ts-dedent';
+import markdown from '../../README.md';
+
+<Meta title="Let's Go" />
+
+# Stencil + Storybook
+
+## Github
+- Repo: https://github.com/dutscher/stencil-storybook
+- Issues: https://github.com/dutscher/stencil-storybook/issues
+
+## MDX links
+- [MDX](https://mdxjs.com/getting-started)
+- [Storybook MDX](https://storybook.js.org/docs/react/api/mdx)
+
+## Change your package name
+in your `package.json`
+
+## Add this snippet code to your page
+<Source
+  language='html'
+  code={dedent`
+     <script type="module" src="${packageName}.esm.js"></script>
+     <link rel="stylesheet" href="${packageName}.css" />
+     <my-component ...></my-component>
+  `}
+/>
+
+## [Readme](https://github.com/dutscher/stencil-storybook/blob/main/README.md)
+<Source
+  language='markdown'
+  code={markdown}
+/>
+
+Cheers
+Dutscher

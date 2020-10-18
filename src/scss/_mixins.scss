@@ -1,0 +1,41 @@
+@mixin visuallyHidden() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+@mixin define-breakpoint($breakpoint) {
+  content: $breakpoint;
+}
+
+@mixin clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: '';
+    width: 0;
+    visibility: hidden;
+  }
+}
+
+@mixin transition($properties: all, $duration: 0.15s, $method: ease-in-out, $delay: 0ms) {
+  $value: ();
+  $willChangeValue: ();
+
+  @each $property in $properties {
+    @if length($value) >0 {
+      $value: append($value, unquote(',') #{$property} $duration $method $delay);
+    } @else {
+      $value: append($value, #{$property} $duration $method $delay);
+    }
+    $willChangeValue: append($willChangeValue, #{$property});
+  }
+
+  transition: $value;
+  will-change: $willChangeValue;
+}

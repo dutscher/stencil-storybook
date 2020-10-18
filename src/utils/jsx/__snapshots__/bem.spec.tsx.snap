@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BEM test js in wbcmp 1`] = `"<cmp-block> <div class=\\"block__authenticated\\">Hallo</div></cmp-block>"`;
+
+exports[`BEM test js in wbcmp 2`] = `"<cmp-block> <div class=\\"block__authenticated block__authenticated--is-active\\">Hallo</div></cmp-block>"`;

@@ -1,0 +1,34 @@
+// this is global stuff, not every component should render this
+// example here some bootstraping
+@import '../../node_modules/bootstrap-scss/variables';
+@import '../../node_modules/bootstrap-scss/reboot';
+@import '../../node_modules/bootstrap-scss/grid';
+
+body {
+  box-sizing: border-box;
+  font-size: $base-font-size;
+  font-feature-settings: 'case';
+
+  // show breakpoint inside of body
+  &::before {
+    @include visuallyHidden();
+  }
+
+  &::before {
+    @include media-breakpoint-down(sm) {
+      @include define-breakpoint('xs');
+    }
+    @include media-breakpoint-up(sm) {
+      @include define-breakpoint('sm');
+    }
+    @include media-breakpoint-up(md) {
+      @include define-breakpoint('md');
+    }
+    @include media-breakpoint-up(lg) {
+      @include define-breakpoint('lg');
+    }
+    @include media-breakpoint-up(xl) {
+      @include define-breakpoint('xl');
+    }
+  }
+}
