@@ -47,37 +47,24 @@ const argTypes = {
 export default {
   title: 'Components/My Component',
   component: 'my-component',
-  parameters: {
-    notes: {markdown},
+  addParameters: {
+    notes: { markdown },
     actions: {
       handles: events,
     },
   },
 };
 
-const Template = (
-  {
-    modifier,
-    first,
-    middle,
-    last,
-    hex,
-  }) => html`
-  <my-component
-    style="color:${hex}"
-    modifier="${modifier}"
-    first="${first}"
-    middle="${middle}"
-    last="${last}">
-  </my-component>
+const Template = ({ modifier, first, middle, last, hex }) => html`
+  <my-component style="color:${hex}" modifier="${modifier}" first="${first}" middle="${middle}" last="${last}"> </my-component>
   ${action('my-component', costumEvents)}
 `;
 
 export const Default = Template.bind({});
 
-Default.args = {...args};
-Default.argTypes = {...argTypes};
+Default.args = { ...args };
+Default.argTypes = { ...argTypes };
 
 export const Modified = Template.bind({});
-Modified.args = {...args, modifier: 'modified'};
-Modified.argTypes = {...argTypes};
+Modified.args = { ...args, modifier: 'modified' };
+Modified.argTypes = { ...argTypes };
