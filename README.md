@@ -2,14 +2,14 @@
 
 # [Stencil 2.0.3](https://stenciljs.com/) + [Storybook 6.0.26](https://storybook.js.org/) + Real Stencil HMR (hot module reloading)
 
-This is a starter project for building components with Stencil in Storybook. 
-This sample includes *Real* HMR in Storybook, with the Stencil build running in watch mode.
+This is a starter project for building components with Stencil in Storybook.
+This sample includes _Real_ HMR in Storybook, with the Stencil build running in watch mode.
 Storybook only knows the stories, markup of stencil and entry point.
 
 Aswell its chromatic tested, this means visiual regression testing of your stories.
 
-Thanks to stencil storybook starters [bjankord](https://github.com/bjankord/stencil-storybook-boilerplate), [elwynelwyn](https://github.com/elwynelwyn/stencilbook-ding) 
-And [shoelace](https://github.com/shoelace-style/shoelace) where i get the proxy hmr solution
+Thanks to stencil storybook starters [bjankord](https://github.com/bjankord/stencil-storybook-boilerplate), [elwynelwyn](https://github.com/elwynelwyn/stencilbook-ding)<br/>
+And [shoelace](https://github.com/shoelace-style/shoelace) where i got the proxy hmr solution.
 
 And maybe this [issue](https://github.com/storybookjs/storybook/issues/4600) can be closed?
 
@@ -49,4 +49,3 @@ Use my issues section
 
 That's it!<br/>
 Cheers dutscher
- 
