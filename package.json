@@ -29,12 +29,13 @@
     "lint": "run-p lint:js lint:css",
     "lint:js": "eslint src/**/*{.ts,.tsx}",
     "lint:css": "stylelint 'src/**/*.scss' --allow-empty-input",
+    "lint:husky": "lint-staged",
     "chromatic": "run-s build:stencil chromatic:publish",
     "chromatic:publish": "npx chromatic --project-token <REPLACE-WITH-YOUR-TOKEN> --build-script-name build:storybook"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint"
+      "pre-commit": "npm run lint:husky"
     }
   },
   "dependencies": {
@@ -79,7 +80,9 @@
     "bootstrap-scss": "^4.2.1",
     "concurrently": "^5.3.0",
     "wait-on": "^5.2.0",
-    "ts-dedent": "^2.0.0"
+    "ts-dedent": "^2.0.0",
+    "lint-staged": "^10.4.2",
+    "prettier": "^2.1.2"
   },
   "jest": {
     "preset": "@stencil/core/testing"
@@ -95,14 +98,14 @@
   ],
   "author": [
     {
-      "name" : "André Bellmann",
+      "name": "André Bellmann",
       "username": "ingomc",
-      "email" : "janick2002@gmx.de"
+      "email": "janick2002@gmx.de"
     },
     {
-      "name" : "Willy Woitas",
+      "name": "Willy Woitas",
       "username": "dutscher",
-      "email" : "dutscher_sbf@hotmail.com"
+      "email": "dutscher_sbf@hotmail.com"
     }
   ]
 }
