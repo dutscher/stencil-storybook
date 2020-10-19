@@ -91,5 +91,17 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
+  ],
+  "author": [
+    {
+      "name" : "André Bellmann",
+      "username": "ingomc",
+      "email" : "janick2002@gmx.de"
+    },
+    {
+      "name" : "Willy Woitas",
+      "username": "dutscher",
+      "email" : "dutscher_sbf@hotmail.com"
+    }
   ]
 }
