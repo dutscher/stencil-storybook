@@ -19,6 +19,7 @@
     "watch:storybook": "start-storybook -p 3001 --ci --quiet",
     "watch:stencil": "stencil build --dev --watch --serve --port 3002",
     "watch:proxy": "wait-on http://localhost:3001/ && wait-on http://localhost:3002/ && node ./scripts/proxy.js",
+    "new:component": "stencil generate",
     "--- production ---": "this is a divider",
     "build": "run-s build:stencil build:storybook",
     "build:stencil": "npm run lint && stencil build --docs",
