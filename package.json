@@ -28,7 +28,7 @@
     "test": "stencil test --spec --e2e --coverage",
     "lint": "run-p lint:js lint:css",
     "lint:js": "eslint src/**/*{.ts,.tsx}",
-    "lint:css": "stylelint 'src/**/*.scss' --allow-empty-input",
+    "lint:css": "stylelint 'src/**/*.scss' --allow-empty-input --config ./.stylelintrc",
     "lint:husky": "lint-staged",
     "chromatic": "run-s build:stencil chromatic:publish",
     "chromatic:publish": "npx chromatic --project-token <REPLACE-WITH-YOUR-TOKEN> --build-script-name build:storybook"
