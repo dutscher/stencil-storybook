@@ -2,7 +2,6 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 const scssVariables = 'src/scss/variables.scss';
-
 const { name, distDirs } = require('./package.json');
 
 export const config: Config = {
@@ -11,9 +10,7 @@ export const config: Config = {
   taskQueue: 'async',
   plugins: [
     sass({
-      injectGlobalPaths: [
-        scssVariables,
-      ],
+      injectGlobalPaths: [scssVariables],
     }),
   ],
   globalStyle: 'src/scss/init.scss',
@@ -44,7 +41,7 @@ export const config: Config = {
     // create components(.d.ts|json) into dist
     {
       type: 'docs-json',
-      file: distDirs.stencil + '/components.json',
+      file: `${distDirs.stencil}/components.json`,
     },
   ],
 };

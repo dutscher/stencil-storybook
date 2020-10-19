@@ -1,16 +1,17 @@
 {
-  "name": "stencil",
+  "name": "stencil-storybook",
+  "beawareofchange": "change aswell scripts:build:storybook --static-dir",
   "version": "1.0.0",
   "distDirs": {
     "stencil": "dist-stencil",
     "storybook": "dist-storybook",
-    "beawareofchange": "change aswell main,module,es2015,es2017,types,collection and scripts:build:storybook and .gitignore"
+    "beawareofchange": "change aswell main,module,es2015,es2017,types,collection and .gitignore"
   },
   "main": "dist-stencil/index.cjs.js",
   "module": "dist-stencil/index.js",
   "es2015": "dist-stencil/esm/index.js",
   "es2017": "dist-stencil/esm/index.js",
-  "types": "dist-stencil/types/index.d.ts",
+  "types": "dist-stencil/index.d.ts",
   "collection": "dist-stencil/collection/collection-manifest.json",
   "scripts": {
     "npm:install": "npm install",
@@ -23,7 +24,7 @@
     "--- production ---": "this is a divider",
     "build": "run-s build:stencil build:storybook",
     "build:stencil": "stencil build --docs",
-    "build:storybook": "build-storybook --output-dir ./dist-storybook --static-dir ./dist-stencil/styleguide",
+    "build:storybook": "build-storybook --output-dir ./dist-storybook --static-dir ./dist-stencil/stencil-storybook",
     "--- misc ---": "this is a divider",
     "test": "stencil test --spec --e2e --coverage",
     "lint": "run-p lint:js lint:css",
@@ -39,18 +40,18 @@
     }
   },
   "dependencies": {
+    "@storybook/web-components": "^6.0.26",
     "@stencil/core": "^2.0.3",
+    "@stencil/sass": "^1.3.2",
     "lit-html": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@stencil/eslint-plugin": "^0.3.1",
-    "@stencil/sass": "^1.3.2",
     "@storybook/addon-actions": "^6.0.26",
     "@storybook/addon-essentials": "^6.0.26",
     "@storybook/addon-links": "^6.0.26",
     "@storybook/addon-notes": "^5.3.21",
-    "@storybook/web-components": "^6.0.26",
     "@types/jest": "^26.0.14",
     "@types/node": "^14.11.2",
     "@types/puppeteer": "^3.0.2",

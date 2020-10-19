@@ -1,7 +1,7 @@
 {
   "*.{ts,tsx,js,jsx}": [
     "prettier --write",
-    "eslint src/**/*{.ts,.tsx,.js,.jsx}",
+    "eslint 'src/**/*{.ts,.tsx,.js,.jsx}' --fix",
     "git add"
   ],
   "*.json": [
