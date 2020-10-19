@@ -2,6 +2,8 @@
 
 # [Stencil 2.0.3](https://stenciljs.com/) + [Storybook 6.0.26](https://storybook.js.org/) + Real Stencil HMR (hot module reloading)
 
+[Storybook on gh-pages](https://dutscher.github.io/stencil-storybook/index.html)
+
 This is a starter project for building components with Stencil in Storybook.
 This sample includes _Real_ HMR in Storybook, with the Stencil build running in watch mode.
 Storybook only knows the stories, markup of stencil and entry point.
