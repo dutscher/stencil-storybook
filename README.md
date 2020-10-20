@@ -2,7 +2,7 @@
 
 # [Stencil 2.0.3](https://stenciljs.com/) + [Storybook 6.0.26](https://storybook.js.org/) + Real Stencil HMR (hot module reloading)
 
-[ [ DEMO ] Storybook on gh-pages](https://dutscher.github.io/stencil-storybook/index.html)
+[ DEMO Storybook on gh-pages](https://dutscher.github.io/stencil-storybook/)
 
 This is a starter project for building components with Stencil in Storybook.
 This sample includes _Real_ HMR in Storybook, with the Stencil build running in watch mode.
@@ -20,7 +20,7 @@ And maybe this [issue](https://github.com/storybookjs/storybook/issues/4600) can
 ✔️ Storybook 6+ WebComponents ready<br/>
 ✔️ Real HMR on development with Stencil Dev Server, this keep storybooks state of controls<br/>
 ✔️ chromatic.com visiual regression testing ready<br/>
-✔️ Tested on Windows 10 and Mac<br/>
+✔️ Tested on Windows 10 and Mac 10.15.6<br/>
 ✔️ Bootstrap reset and Webfonts boilerplate included<br/>
 
 ## How the HMR works
