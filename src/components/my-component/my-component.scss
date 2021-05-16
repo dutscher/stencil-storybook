@@ -1,18 +1,19 @@
+@import '#$componentNameSelector';
+
 // with shadow dom
 :host {
   display: block;
   font-family: sans-serif;
 }
-$selector: '.my-component';
 
-#{$selector} {
+#{$componentNameSelector} {
   font-size: ms(0);
   display: block;
   // block
   &__name {
     color: $color-primary;
 
-    #{$selector}__example-for-inner-block {
+    #{$componentNameSelector}__example-for-inner-block {
 
     }
   }

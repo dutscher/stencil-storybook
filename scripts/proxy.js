@@ -31,13 +31,6 @@ app.use(/\/iframe\.html\?*/, async (req, res, next) => {
 
   index = index
     .replace(
-      '<head>',
-      `<head>
-        <script type="module" src="/${distDirs.stencil}/${name}/${name}.esm.js"></script>
-        <link rel="stylesheet" href="/${distDirs.stencil}/${name}/${name}.css" />
-        `,
-    )
-    .replace(
       '</body>',
       `<iframe src="/~dev-server" style="display: block; width: 0; height: 0; border: 0;"></iframe>
       </body>`,
@@ -54,5 +47,12 @@ app.use('/', createProxyMiddleware({
 }));
 
 app.listen(browserPort, () => {
-  console.log(chalk.cyan(`\n\n\nLaunch your Stencil/Storybook http://localhost:${browserPort}\n\n\n`));
+  const text = `  Launch your Stencil + Storybook under http://localhost:${browserPort}   `;
+  const textLen = text.length;
+  const blankLine = chalk.magenta(`|${' '.repeat(textLen)}|`);
+  console.log(chalk.magenta(`╭${'─'.repeat(textLen)}╮`));
+  console.log(blankLine);
+  console.log(chalk.magenta(`|${chalk.bold(text)}|`));
+  console.log(blankLine);
+  console.log(chalk.magenta(`╰${'─'.repeat(textLen)}╯`));
 });

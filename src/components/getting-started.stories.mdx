@@ -1,9 +1,9 @@
-import { Meta, Source } from '@storybook/addon-docs/blocks';
-import packageName from '../../.storybook/helpers/mdx-packageJson';
+import { Meta, Source, Description } from '@storybook/addon-docs/blocks';
+import { name, distDirs, version } from '../utils/storybook/mdx-package-json';
 import dedent from 'ts-dedent';
 import markdown from '../../README.md';
 
-<Meta title="Let's Go" />
+<Meta title="Getting Started" />
 
 # Stencil + Storybook
 
@@ -22,17 +22,14 @@ in your `package.json`
 <Source
   language='html'
   code={dedent`
-     <script type="module" src="${packageName}.esm.js"></script>
-     <link rel="stylesheet" href="${packageName}.css" />
+     <script type="module" src="${distDirs.stencil}/lib/lib.esm.js"></script>
+     <link rel="stylesheet" href="${distDirs.stencil}/lib/lib.css" />
      <my-component ...></my-component>
   `}
 />
 
 ## [Readme](https://github.com/dutscher/stencil-storybook/blob/main/README.md)
-<Source
-  language='markdown'
-  code={markdown}
-/>
+<Description markdown={markdown} />
 
 Cheers
 Dutscher

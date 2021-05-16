@@ -1,6 +1,6 @@
 import { Component, Prop, Event, EventEmitter, Host, h } from '@stencil/core';
 import { format } from '../../utils/utils';
-import { BEM, hostClasses } from '../../utils';
+import { BEM, hostClasses, ComponentName } from '../../utils';
 
 @Component({
   tag: 'my-component',
@@ -8,17 +8,22 @@ import { BEM, hostClasses } from '../../utils';
   shadow: false,
 })
 export class MyComponent {
-  private readonly componentName: string = 'my-component';
+  @ComponentName() componentName;
 
+  /** First Prop */
   @Prop() first: string;
 
+  /** Middle Prop */
   @Prop() middle: string;
 
+  /** Last Prop */
   @Prop() last: string;
 
+  /** Modifier Prop */
   @Prop() modifier: string = '';
 
-  @Event({bubbles: false}) clicked!: EventEmitter<void>;
+  /** Prevent */
+  @Event() removeButtonResponse!: EventEmitter;
 
   private getText(): string {
     return format(this.first, this.middle, this.last);
@@ -32,9 +37,10 @@ export class MyComponent {
 
     return (
       <Host
-        class={cssClasses}
-        onClick={() => this.clicked.emit()}>
+        class={`${cssClasses} dasdsa---dddsd container`}
+        onClick={() => this.removeButtonResponse.emit({ test: 'test' })}>
         Hello, World! I'm <span class={BEM(this, 'name')}> {this.getText()}</span>
+        <slot />
       </Host>
     );
   }

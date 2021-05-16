@@ -1,0 +1,80 @@
+<link rel="icon" href="assets/favicon.ico" />
+
+<style>
+  code.sbdocs {
+    white-space: normal;
+  }
+  /* ie11: boolean toggle fix */
+  label[title='Change to true'] input,
+  label[title='Change to false'] input {
+    opacity: 0;
+  }
+  /* docs colors */
+  h2 code,
+  h3 code,
+  h4 code {
+    line-height: 1;
+    margin: 0 2px;
+    padding: 3px 5px;
+    white-space: nowrap;
+    border-radius: 3px;
+    border: 1px solid #feeeee;
+    color: rgba(51, 51, 51, 0.9);
+    background-color: #f8f8f8;
+  }
+  #root-inner h2 code,
+  #root-inner h3 code,
+  #root-inner h4 code {
+    margin-top: 6px !important;
+    display: inline-block;
+  }
+  .docblock-source .os-content pre {
+    background-color: #f8f8f8 !important;
+  }
+  span.composition-item {
+    display: inline-block;
+    text-align: center;
+  }
+  span.composition-item--icon {
+    width: 100px;
+    position: relative;
+    padding: 6px;
+    margin-bottom: 16px;
+  }
+  span.composition-item--icon::before {
+    position: absolute;
+    content: attr(title);
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -16px;
+    font-size: 12px;
+  }
+  span.composition-type-label {
+    position: relative;
+    padding: 26px;
+    display: inline-block;
+    font-size: 10px;
+  }
+  span.composition-type-label::before {
+    transform: rotate(-45deg) translateY(30px);
+    transform-origin: left;
+    content: attr(label);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  #root-inner hr {
+    margin: 16px 0;
+    border: 0;
+    background: black;
+    height: 1px;
+  }
+</style>
+
+<script src="dist-stencil/lib/lib.js" nomodule></script>
+<script src="dist-stencil/lib/lib.esm.js" type="module"></script>
+<link rel="stylesheet" href="dist-stencil/lib/lib.css" />

@@ -7,7 +7,7 @@
     "lib": ["dom", "es2015", "es2017"],
     "moduleResolution": "node",
     "module": "esnext",
-    "target": "es2017",
+    "target": "es2018",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "jsx": "react",
@@ -16,6 +16,6 @@
     "resolveJsonModule": true,
     "stripInternal": true
   },
-  "include": ["src", "types/jsx.d.ts", "./typings.d.ts", "./stencil.config.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src", "./markdown-types.d.ts"],
+  "exclude": ["node_modules", "dist-stencil", "dist-storybook"]
 }

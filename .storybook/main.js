@@ -1,39 +1,28 @@
-// .storybook/main.js
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk');
-
+const TerserPlugin = require('terser-webpack-plugin');
 // Export a function. Accept the base config as the only param.
 module.exports = {
   stories: ['../src/components/**/*.stories.@(js|jsx|ts|tsx|mdx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs', '@storybook/addon-essentials'],
   webpackFinal: async (config, { configType }) => {
-    // watch:storybook configType === 'DEVELOPMENT'
-    // build:storybook configType === 'PRODUCTION'
-    if (configType === 'PRODUCTION') {
-      config = doProd(config);
-    }
-
+    // watch:storybook > configType === 'DEVELOPMENT'
+    // build:storybook > configType === 'PRODUCTION'
+    //    object { amd?, bail?, cache?, context?, dependencies?, devServer?, devtool?, entry?, externals?, infrastructureLogging?, loader?, mode?
+    //    ,module?, name?, node?, optimization?, output?, parallelism?, performance?, plugins?, profile?, recordsInputPath?, recordsOutputPath?, re
+    //    cordsPath?, resolve?, resolveLoader?, serve?, stats?, target?, watch?, watchOptions? }
+    // config.plugins.push();
+    // console.log(config.plugins);
+    // set sourcemap to false
+    config.optimization.minimizer = [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: false,
+        terserOptions: {
+          mangle: false,
+          keep_fnames: true,
+        },
+      }),
+    ];
     return config;
   },
-};
-
-const doProd = (config) => {
-  const { name, distDirs } = require('../package.json');
-  const OUTPUT_DIR = path.join(__dirname, '../' + distDirs.stencil);
-  const mainJs = path.join(OUTPUT_DIR, `cjs/${name}.cjs.js`);
-
-  // override HtmlWebpackPlugin to inject stencil into storybook prod
-  // template default: @storybook/core/dist/server/templates/index.ejs
-  config.plugins[1].options = {
-    ...config.plugins[1].options,
-    template: path.resolve(__dirname, 'index.override.ejs'),
-  };
-  // no stencil build exists
-  if (!fs.existsSync(mainJs)) {
-    console.error(chalk.black.bgRed(`---------------------------------`));
-    console.error(chalk.black.bgRed(`Run 'npm run build:stencil' first`));
-    console.error(chalk.black.bgRed(`---------------------------------`));
-  }
-  return config;
 };

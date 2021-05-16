@@ -6,7 +6,7 @@ export interface HostClassesSettings {
 }
 
 // sizes for icons etc.
-export enum sizes {
+export const enum sizes {
   xs = 'xs',
   sm = 'sm',
   md = 'md',

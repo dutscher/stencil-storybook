@@ -7,11 +7,19 @@
 
 ## Properties
 
-| Property | Attribute | Description     | Type     | Default     |
-| -------- | --------- | --------------- | -------- | ----------- |
-| `first`  | `first`   | The first name  | `string` | `undefined` |
-| `last`   | `last`    | The last name   | `string` | `undefined` |
-| `middle` | `middle`  | The middle name | `string` | `undefined` |
+| Property   | Attribute  | Description   | Type     | Default     |
+| ---------- | ---------- | ------------- | -------- | ----------- |
+| `first`    | `first`    | First Prop    | `string` | `undefined` |
+| `last`     | `last`     | Last Prop     | `string` | `undefined` |
+| `middle`   | `middle`   | Middle Prop   | `string` | `undefined` |
+| `modifier` | `modifier` | Modifier Prop | `string` | `''`        |
+
+
+## Events
+
+| Event                  | Description | Type               |
+| ---------------------- | ----------- | ------------------ |
+| `removeButtonResponse` |             | `CustomEvent<any>` |
 
 
 ----------------------------------------------

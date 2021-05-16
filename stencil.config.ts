@@ -1,16 +1,22 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+import getComponentNameSelectorVariableFromStencil from './scripts/get-component-name-selector-from-stencil-importer';
 
 const scssVariables = 'src/scss/variables.scss';
-const { name, distDirs } = require('./package.json');
+const { distDirs } = require('./package.json');
+const yargs = require('yargs');
 
-export const config: Config = {
-  namespace: name,
-  buildEs5: false,
+const docs = yargs.argv.docs;
+
+const generatedConfig: Config = {
+  namespace: 'lib',
+  buildEs5: process.argv.includes('--es5') || 'prod',
   taskQueue: 'async',
+  srcDir: 'src',
   plugins: [
     sass({
       injectGlobalPaths: [scssVariables],
+      importer: getComponentNameSelectorVariableFromStencil,
     }),
   ],
   globalStyle: 'src/scss/init.scss',
@@ -33,11 +39,6 @@ export const config: Config = {
       type: 'dist-custom-elements-bundle',
       dir: distDirs.stencil,
     },
-    // creates readme.md for components
-    {
-      type: 'docs-readme',
-      dir: distDirs.stencil,
-    },
     // create components(.d.ts|json) into dist
     {
       type: 'docs-json',
@@ -45,3 +46,13 @@ export const config: Config = {
     },
   ],
 };
+
+// creates readme.md for components
+if (docs) {
+  generatedConfig.outputTargets.push({
+    type: 'docs-readme',
+    dir: 'src',
+  });
+}
+
+export const config: Config = generatedConfig;
