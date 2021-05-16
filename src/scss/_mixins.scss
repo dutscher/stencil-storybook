@@ -1,4 +1,4 @@
-@mixin visuallyHidden() {
+@mixin visually-hidden() {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -8,6 +8,7 @@
   position: absolute;
   width: 1px;
 }
+
 
 @mixin define-breakpoint($breakpoint) {
   content: $breakpoint;

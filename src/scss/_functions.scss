@@ -61,11 +61,6 @@
   @return ($rem-size * 1rem);
 }
 
-// ( -rem(16px) || -rem(16) ) => -1rem
-@function -rem($size) {
-  @return -(rem($size));
-}
-
 @function z-index($layer) {
   @return map-get($z-indexes, $layer);
 }

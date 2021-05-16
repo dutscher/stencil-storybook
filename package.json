@@ -38,11 +38,6 @@
     "chromatic": "run-s build:stencil chromatic:publish",
     "chromatic:publish": "npx chromatic --project-token <REPLACE-WITH-YOUR-TOKEN> --build-script-name build:storybook"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run lint:husky"
-    }
-  },
   "dependencies": {
     "@storybook/web-components": "^6.2.9",
     "@stencil/core": "^2.5.2",
@@ -83,6 +78,9 @@
     "react-is": "^16.13.1",
     "stylelint": "^13.7.2",
     "stylelint-config-sass-guidelines": "^7.1.0",
+    "stylelint-declaration-block-no-ignored-properties": "^2.3.0",
+    "stylelint-declaration-strict-value": "^1.6.1",
+    "stylelint-high-performance-animation": "^1.5.1",
     "typescript": "^4.0.3",
     "write-file-webpack-plugin": "^4.5.1",
     "http-proxy-middleware": "^1.0.5",
@@ -98,15 +96,6 @@
   "jest": {
     "preset": "@stencil/core/testing"
   },
-  "stylelint": {
-    "extends": "stylelint-config-sass-guidelines"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "author": [
     {
       "name": "André Bellmann",

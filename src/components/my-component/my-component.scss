@@ -14,7 +14,7 @@
     color: $color-primary;
 
     #{$componentNameSelector}__example-for-inner-block {
-
+      color: $color-secondary;
     }
   }
   // modifier

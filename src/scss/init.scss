@@ -6,8 +6,8 @@
 
 body {
   box-sizing: border-box;
-  font-size: $base-font-size;
   font-feature-settings: 'case';
+  font-size: $base-font-size;
 
   // show breakpoint inside of body
   &::before {

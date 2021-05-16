@@ -53,21 +53,21 @@ $padding-xl: $padding-base * 5; // 2.5rem / 40px
 // media queries
 // use @include media-breakpoint-up(sm) {...}
 $grid-breakpoints: (
-    xs: 0,
-    sm: 576px,
-    md: 768px,
-    lg: 1024px,
-    xl: 1200px,
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
 );
 
 // Grid containers
 // Define the maximum width of `.container` for different screen sizes.
 
 $container-max-widths: (
-    sm: 576px,
-    md: 768px,
-    lg: 1024px,
-    xl: 1080px,
+  sm: 576px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1080px,
 );
 
 // Grid Columns / Container Variables
