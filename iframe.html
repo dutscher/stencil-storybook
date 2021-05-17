@@ -4,6 +4,41 @@
     display: none;
   }
 
+  .sb-show-main.sb-main-centered {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+  .sb-show-main.sb-main-centered #root {
+    box-sizing: border-box;
+    margin: auto;
+    padding: 1rem;
+    max-height: 100%; /* Hack for centering correctly in IE11 */
+  }
+
+  /* Vertical centering fix for IE11 */
+  @media screen and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .sb-show-main.sb-main-centered:after {
+      content: '';
+      min-height: inherit;
+      font-size: 0;
+    }
+  }
+
+  .sb-show-main.sb-main-fullscreen {
+    margin: 0;
+    padding: 0;
+    display: block;
+  }
+
+  .sb-show-main.sb-main-padded {
+    margin: 0;
+    padding: 1rem;
+    display: block;
+  }
+
   .sb-wrapper {
     position: fixed;
     top: 0;
@@ -68,7 +103,102 @@
   } catch (e) {
     // eslint-disable-next-line no-console
     console.warn('unable to connect to top frame for connecting dev tools');
-  }</script><script type="module" src="stencil-storybook.esm.js"></script><link rel="stylesheet" href="stencil-storybook.css"><style>#root[hidden],
+  }
+
+  window.onerror = function onerror(message, source, line, column, err) {
+    if (window.CONFIG_TYPE !== 'DEVELOPMENT') return;
+    // eslint-disable-next-line no-var, vars-on-top
+    var xhr = new window.XMLHttpRequest();
+    xhr.open('POST', '/runtime-error');
+    xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
+    xhr.send(
+      JSON.stringify({
+        /* eslint-disable object-shorthand */
+        message: message,
+        source: source,
+        line: line,
+        column: column,
+        error: err && { message: err.message, name: err.name, stack: err.stack },
+        origin: 'preview',
+        /* eslint-enable object-shorthand */
+      })
+    );
+  };</script><link rel="icon" href="assets/favicon.ico"><style>code.sbdocs {
+    white-space: normal;
+  }
+  /* ie11: boolean toggle fix */
+  label[title='Change to true'] input,
+  label[title='Change to false'] input {
+    opacity: 0;
+  }
+  /* docs colors */
+  h2 code,
+  h3 code,
+  h4 code {
+    line-height: 1;
+    margin: 0 2px;
+    padding: 3px 5px;
+    white-space: nowrap;
+    border-radius: 3px;
+    border: 1px solid #feeeee;
+    color: rgba(51, 51, 51, 0.9);
+    background-color: #f8f8f8;
+  }
+  #root-inner h2 code,
+  #root-inner h3 code,
+  #root-inner h4 code {
+    margin-top: 6px !important;
+    display: inline-block;
+  }
+  .docblock-source .os-content pre {
+    background-color: #f8f8f8 !important;
+  }
+  span.composition-item {
+    display: inline-block;
+    text-align: center;
+  }
+  span.composition-item--icon {
+    width: 100px;
+    position: relative;
+    padding: 6px;
+    margin-bottom: 16px;
+  }
+  span.composition-item--icon::before {
+    position: absolute;
+    content: attr(title);
+    left: 0;
+    right: 0;
+    text-align: center;
+    bottom: -16px;
+    font-size: 12px;
+  }
+  span.composition-type-label {
+    position: relative;
+    padding: 26px;
+    display: inline-block;
+    font-size: 10px;
+  }
+  span.composition-type-label::before {
+    transform: rotate(-45deg) translateY(30px);
+    transform-origin: left;
+    content: attr(label);
+    position: absolute;
+    top: 50%;
+    left: 0;
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  #root-inner hr {
+    margin: 16px 0;
+    border: 0;
+    background: black;
+    height: 1px;
+  }</style><script src="dist-stencil/lib/lib.js" nomodule></script><script src="dist-stencil/lib/lib.esm.js" type="module"></script><link rel="stylesheet" href="dist-stencil/lib/lib.css"><style>#root[hidden],
       #docs-root[hidden] {
         display: none !important;
-      }</style></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><div id="docs-root"></div><script>window['LOGLEVEL'] = "info";</script><script src="./sb_dll/storybook_docs_dll.js"></script><script src="runtime~main.d00d50b00feca2e4ac7c.bundle.js"></script><script src="vendors~main.d00d50b00feca2e4ac7c.bundle.js"></script><script src="main.d00d50b00feca2e4ac7c.bundle.js"></script></body></html>
+      }</style></head><body><div class="sb-nopreview sb-wrapper"><div class="sb-nopreview_main"><h1 class="sb-nopreview_heading sb-heading">No Preview</h1><p>Sorry, but you either have no stories or none are selected somehow.</p><ul><li>Please check the Storybook config.</li><li>Try reloading the page.</li></ul><p>If the problem persists, check the browser console, or the terminal you've run Storybook from.</p></div></div><div class="sb-errordisplay sb-wrapper"><pre id="error-message" class="sb-heading"></pre><pre class="sb-errordisplay_code"><code id="error-stack"></code></pre></div><div id="root"></div><div id="docs-root"></div><script>window['LOGLEVEL'] = "info";
+            
+        
+            
+              window['FRAMEWORK_OPTIONS'] = {};</script><script src="runtime~main.adb9c6a6.iframe.bundle.js"></script><script src="vendors~main.3c78839c.iframe.bundle.js"></script><script src="main.e32c0715.iframe.bundle.js"></script></body></html>

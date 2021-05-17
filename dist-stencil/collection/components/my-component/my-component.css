@@ -1,0 +1,40 @@
+/* stylelint-disable scale-unlimited/declaration-strict-value */
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/light.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/regular.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto/bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+:host {
+  display: block;
+  font-family: sans-serif;
+}
+
+.my-component {
+  font-size: 16px;
+  display: block;
+}
+.my-component__name {
+  color: #fba308;
+}
+.my-component__name .my-component__example-for-inner-block {
+  color: #00abba;
+}
+.my-component--modified {
+  text-align: center;
+}

@@ -1,0 +1,1 @@
+import{p as promiseResolve,b as bootstrapLazy}from"./index-42bac8bc.js";var patchBrowser=function(){var r=import.meta.url;var e={};if(r!==""){e.resourcesUrl=new URL(".",r).href}return promiseResolve(e)};patchBrowser().then((function(r){return bootstrapLazy([["my-component",[[4,"my-component",{first:[1],middle:[1],last:[1],modifier:[1]}]]]],r)}));
