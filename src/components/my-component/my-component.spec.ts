@@ -1,36 +1,20 @@
 import { newSpecPage } from '@stencil/core/testing';
+import { setupSpec, getComponentNameFromFilename } from '../../utils/tests/setup';
 import { MyComponent } from './my-component';
 
-describe('my-component', () => {
-  it('renders', async () => {
-    const { root } = await newSpecPage({
-      components: [MyComponent],
-      html: '<my-component></my-component>',
-    });
-    expect(root).toEqualHtml(`
-      <my-component>
-        <mock:shadow-root>
-          <div>
-            Hello, World! I'm
-          </div>
-        </mock:shadow-root>
-      </my-component>
-    `);
+const componentName = getComponentNameFromFilename(__filename);
+
+describe(componentName, () => {
+  it('default', async () => {
+    const { component } = await setupSpec(MyComponent);
+    expect(component.outerHTML).toMatchSnapshot();
   });
 
-  it('renders with values', async () => {
+  it('vs. default manually', async () => {
     const { root } = await newSpecPage({
       components: [MyComponent],
-      html: `<my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>`,
+      html: `<${componentName}></${componentName}>`,
     });
-    expect(root).toEqualHtml(`
-      <my-component first="Stencil" last="'Don't call me a framework' JS">
-        <mock:shadow-root>
-          <div>
-            Hello, World! I'm Stencil 'Don't call me a framework' JS
-          </div>
-        </mock:shadow-root>
-      </my-component>
-    `);
+    expect(root).toMatchSnapshot();
   });
 });

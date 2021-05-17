@@ -115,12 +115,9 @@ export function setupStory(stencilSettings, storySettings) {
     },
     customEvents: stencilSettings.customEvents || null,
     events: storySettings.events || null,
-    args: { ...stencilSettings.args, ...(storySettings.argsDefaults || {}) },
-    argTypes: {
-      ...stencilSettings.argTypes,
-      ...(storySettings.argTypes || storySettings.argsDefaults || {}),
-    },
-    // export
+    args: {},
+    argTypes: {},
+    // tpl functions
     tpl: storySettings.tplOverride || stencilSettings.tpl,
     tplComposition: (args) => settings.tpl.bind()({ ...args, docsView: true }),
     tplCompositionWithActionLogs: (args) =>
@@ -138,6 +135,19 @@ export function setupStory(stencilSettings, storySettings) {
   //      ]
   //   }
   // }},
+  if (settings.args) {
+    settings.args = {
+      ...stencilSettings.args,
+      ...(storySettings.argDefaults || {}),
+    };
+  }
+  if (settings.argTypes) {
+    settings.argTypes = {
+      ...stencilSettings.argTypes,
+      ...(storySettings.argTypes || storySettings.argDefaults || {}),
+    };
+  }
+
   if (storySettings.argOptions) {
     Object.keys(storySettings.argOptions).map((arg) => {
       // is stencil select there?

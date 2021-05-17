@@ -13,3 +13,7 @@ export const enum sizes {
   lg = 'lg',
   xl = 'xl',
 }
+
+type DenyPropsByType<T, Condition> = { [P in keyof T]: T[P] extends Condition ? T[P] : never };
+type AllowedProps<T> = { [P in keyof T]: T[P] };
+export type FilterProps<T, Condition> = AllowedProps<DenyPropsByType<T, Condition>>;

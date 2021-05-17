@@ -2,7 +2,7 @@ const fetch = require('node-fetch');
 const express = require('express');
 const chalk = require('chalk');
 const { createProxyMiddleware } = require('http-proxy-middleware');
-const { name, distDirs } = require('../package.json');
+const { distDirs } = require('../package.json');
 
 const app = express();
 const browserPort = 3000;
@@ -26,25 +26,28 @@ app.use(
 );
 // storybook preview
 app.use(/\/iframe\.html\?*/, async (req, res, next) => {
-  let index = await fetch(`http://localhost:${storybookPort}/iframe.html${req.url.replace('/', '')}`)
-    .then(res => res.text());
+  let index = await fetch(
+    `http://localhost:${storybookPort}/iframe.html${req.url.replace('/', '')}`,
+  ).then((res) => res.text());
 
-  index = index
-    .replace(
-      '</body>',
-      `<iframe src="/~dev-server" style="display: block; width: 0; height: 0; border: 0;"></iframe>
+  index = index.replace(
+    '</body>',
+    `<iframe src="/~dev-server" style="display: block; width: 0; height: 0; border: 0;"></iframe>
       </body>`,
-    );
+  );
   res.type('html').send(index);
 });
 
 // serve stencil dist
 app.use('/' + distDirs.stencil, express.static('./' + distDirs.stencil));
 // serve every storybook requests to storybook
-app.use('/', createProxyMiddleware({
-  target: `http://localhost:${storybookPort}`,
-  logLevel: 'silent',
-}));
+app.use(
+  '/',
+  createProxyMiddleware({
+    target: `http://localhost:${storybookPort}`,
+    logLevel: 'silent',
+  }),
+);
 
 app.listen(browserPort, () => {
   const text = `  Launch your Stencil + Storybook under http://localhost:${browserPort}   `;

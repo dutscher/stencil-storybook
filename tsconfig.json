@@ -16,6 +16,6 @@
     "resolveJsonModule": true,
     "stripInternal": true
   },
-  "include": ["src", "./markdown-types.d.ts"],
-  "exclude": ["node_modules", "dist-stencil", "dist-storybook"]
+  "include": ["src", "./typings.d.ts"],
+  "exclude": ["node_modules", "dist-stencil", "dist-storybook", "./src/components/**/stencil-stories.ts"]
 }

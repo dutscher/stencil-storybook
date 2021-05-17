@@ -15,21 +15,20 @@ import markdown from '../../README.md';
 - [MDX](https://mdxjs.com/getting-started)
 - [Storybook MDX](https://storybook.js.org/docs/react/api/mdx)
 
-## Change your package name
-in your `package.json`
-
 ## Add this snippet code to your page
+- [as shown in Stencil Docs](https://stenciljs.com/docs/output-targets#differential-bundling)
+
 <Source
   language='html'
   code={dedent`
-     <script type="module" src="${distDirs.stencil}/lib/lib.esm.js"></script>
-     <link rel="stylesheet" href="${distDirs.stencil}/lib/lib.css" />
+     <script src="${distDirs.stencil}/lib/lib.js" nomodule></script>
+     <script src="${distDirs.stencil}/lib/lib.esm.js" type="module"></script>
+     <link rel="stylesheet" href="dist-stencil/lib/lib.css" />
      <my-component ...></my-component>
   `}
 />
 
-## [Readme](https://github.com/dutscher/stencil-storybook/blob/main/README.md)
+## [README.md](https://github.com/dutscher/stencil-storybook/blob/main/README.md)
 <Description markdown={markdown} />
 
-Cheers
-Dutscher
+<img src="assets/1337.jpg" style={{height:'0px'}} />

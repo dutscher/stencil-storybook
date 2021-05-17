@@ -1,6 +1,6 @@
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
-import getComponentNameSelectorVariableFromStencil from './scripts/get-component-name-selector-from-stencil-importer';
+import getComponentNameSelectorVariableFromStencil from './src/utils/stencil/get-component-name-selector-from-stencil-importer';
 
 const scssVariables = 'src/scss/variables.scss';
 const { distDirs } = require('./package.json');

@@ -11,7 +11,7 @@ body {
 
   // show breakpoint inside of body
   &::before {
-    @include visuallyHidden();
+    @include visually-hidden();
   }
 
   &::before {
