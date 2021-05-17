@@ -13,7 +13,7 @@ Aswell its chromatic tested, this means visiual regression testing of your stori
 Thanks to stencil storybook starters [bjankord](https://github.com/bjankord/stencil-storybook-boilerplate), [elwynelwyn](https://github.com/elwynelwyn/stencilbook-ding)<br/>
 And [shoelace](https://github.com/shoelace-style/shoelace) where i got the proxy hmr solution.
 
-And maybe this [issue](https://github.com/storybookjs/storybook/issues/4600) can be closed?
+And maybe this [issue](https://github.com/storybookjs/storybook/issues/4600#issuecomment-711443696) can be closed?
 
 ✔️ NodeJS 14.13.1 ready (use nvm!)<br/>
 ✔️ Stencil 2 ready, not yet es5 tested but should work! + BEM and REM utils<br/>
