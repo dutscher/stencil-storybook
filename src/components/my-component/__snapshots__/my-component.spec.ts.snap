@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`my-component default 1`] = `"<my-component class=\\"my-component dasdsa---dddsd container\\"><!----> Hello, World! I'm <span class=\\"my-component__name\\"></span>  </my-component>"`;
+
+exports[`my-component vs. default manually 1`] = `
+<my-component class="container dasdsa---dddsd my-component">
+  <!---->
+  Hello, World! I'm
+  <span class="my-component__name"></span>
+</my-component>
+`;

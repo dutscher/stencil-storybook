@@ -1,6 +1,6 @@
 import { Component, State, h } from '@stencil/core';
 import BEM, { MODIFIER } from './bem';
-import { setupSpec } from '../../tests/setup';
+import { setupSpec } from '../tests/setup';
 
 describe('MODIFIER', () => {
   @Component({
