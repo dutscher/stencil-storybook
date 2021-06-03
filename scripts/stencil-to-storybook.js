@@ -68,6 +68,8 @@ const parsePropsEventsNSlots = (filePath) => {
   destinationPath.pop();
   const content = fsExt.readFileSync(osSafeFilePath, 'utf-8');
   const lines = content.split('\n');
+  let latestJsDoc = [];
+  let jsDocOpen = false;
 
   lines.map((line, index) => {
     // find tag
@@ -77,11 +79,28 @@ const parsePropsEventsNSlots = (filePath) => {
         defaultJSON.component = tag[1];
       }
     }
+    if (line.includes('/**')) {
+      const jsDocMatch = line.match(/\/\*\* (.*) \*\//);
+      if (jsDocMatch && jsDocMatch.length > 0) {
+        latestJsDoc = [];
+        latestJsDoc.push(jsDocMatch[1]);
+      } else {
+        jsDocOpen = true;
+        latestJsDoc = [];
+      }
+    } else if (jsDocOpen) {
+      const jsDocMatch = line.match(/\* (.*)/);
+      if (line.includes('*/')) {
+        jsDocOpen = false;
+      } else if (jsDocMatch.length > 0) {
+        latestJsDoc.push(jsDocMatch[1]);
+      }
+    }
     // add prop
     if (line.includes('@Prop(')) {
       // @Prop() name: string = '';
       // @Prop() label: string;
-      const propName = line.match(/@Prop\(.*\) ([a-z]*)(\?|!)?(:| =) .*/);
+      const propName = line.match(/@Prop\(.*\) ([a-z]*)(\?|!)?(:| =)?( .*)?/i);
       // @Prop() clickable: boolean = false;
       // @Prop() clickable = false;
       const isBoolean = line.match(/\).*(:|=) (false|true|boolean)/);
@@ -89,12 +108,12 @@ const parsePropsEventsNSlots = (filePath) => {
       // @Prop() outline: ColorToken = ColorToken.Transparent;
       const isSelect = line.match(/: ([a-z]*)(;| = .*;)/i);
       // /** emit huiClick event */
-      const jsdoc = lines[index - 1].match(/\*\* (.*) \*\//);
+      const jsdoc = latestJsDoc.join('\n');
 
       if (propName && jsdoc) {
         defaultJSON.args[propName[1]] = isBoolean && isBoolean.length > 1 ? false : '';
         defaultJSON.argTypes[propName[1]] = {
-          description: jsdoc[1],
+          description: jsdoc,
         };
 
         if (isSelect && !isBoolean && !['string', 'boolean', 'number'].includes(isSelect[1])) {

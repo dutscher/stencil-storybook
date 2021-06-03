@@ -22,6 +22,17 @@ export class MyComponent {
   /** Modifier Prop */
   @Prop() modifier: string = '';
 
+  /**
+   * Specify size limit in Kb
+   * */
+  @Prop() maxFileSize;
+
+  /**
+   * Yo im a multiline
+   * can you see me?
+   **/
+  @Prop() multilineShizzle: boolean;
+
   /** Prevent */
   @Event() removeButtonResponse!: EventEmitter;
 
@@ -38,7 +49,8 @@ export class MyComponent {
     return (
       <Host
         class={`${cssClasses} dasdsa---dddsd container`}
-        onClick={() => this.removeButtonResponse.emit({ test: 'test' })}>
+        onClick={() => this.removeButtonResponse.emit({ test: 'test' })}
+      >
         Hello, World! I'm <span class={BEM(this, 'name')}> {this.getText()}</span>
         <slot />
       </Host>
