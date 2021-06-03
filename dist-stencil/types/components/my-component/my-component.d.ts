@@ -9,6 +9,15 @@ export declare class MyComponent {
   last: string;
   /** Modifier Prop */
   modifier: string;
+  /**
+   * Specify size limit in Kb
+   * */
+  maxFileSize: any;
+  /**
+   * Yo im a multiline
+   * can you see me?
+   **/
+  multilineShizzle: boolean;
   /** Prevent */
   removeButtonResponse: EventEmitter;
   private getText;

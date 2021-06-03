@@ -1,4 +1,4 @@
-import { g as getElement, r as registerInstance, c as createEvent, h, H as Host } from './index-42bac8bc.js';
+import { g as getElement, r as registerInstance, c as createEvent, h, H as Host } from './index-0a3e91a1.js';
 
 function format(first, middle, last) {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');

@@ -103,6 +103,40 @@ export class MyComponent {
       "attribute": "modifier",
       "reflect": false,
       "defaultValue": "''"
+    },
+    "maxFileSize": {
+      "type": "any",
+      "mutable": false,
+      "complexType": {
+        "original": "any",
+        "resolved": "any",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": "Specify size limit in Kb"
+      },
+      "attribute": "max-file-size",
+      "reflect": false
+    },
+    "multilineShizzle": {
+      "type": "boolean",
+      "mutable": false,
+      "complexType": {
+        "original": "boolean",
+        "resolved": "boolean",
+        "references": {}
+      },
+      "required": false,
+      "optional": false,
+      "docs": {
+        "tags": [],
+        "text": "Yo im a multiline\ncan you see me?"
+      },
+      "attribute": "multiline-shizzle",
+      "reflect": false
     }
   }; }
   static get events() { return [{

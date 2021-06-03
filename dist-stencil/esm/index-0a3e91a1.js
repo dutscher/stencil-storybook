@@ -1,25 +1,3 @@
-'use strict';
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      }
-    });
-  }
-  n['default'] = e;
-  return Object.freeze(n);
-}
-
 const NAMESPACE = 'lib';
 
 let contentRef;
@@ -943,6 +921,11 @@ const addHydratedFlag = (elm) => (elm.classList.add('hydrated') );
 const parsePropertyValue = (propValue, propType) => {
     // ensure this value is of the correct prop type
     if (propValue != null && !isComplexType(propValue)) {
+        if (propType & 4 /* Boolean */) {
+            // per the HTML spec, any string value means it is a boolean true value
+            // but we'll cheat here and say that the string "false" is the boolean false
+            return propValue === 'false' ? false : propValue === '' || !!propValue;
+        }
         if (propType & 1 /* String */) {
             // could have been passed as a number or boolean
             // but we still want it as a string
@@ -1260,11 +1243,11 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     if (module) {
         return module[exportName];
     }
-    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+    return import(
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${''}`)); }).then(importedModule => {
+    `./${bundleId}.entry.js${''}`).then(importedModule => {
         {
             cmpModules.set(bundleId, importedModule);
         }
@@ -1315,10 +1298,4 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-exports.Host = Host;
-exports.bootstrapLazy = bootstrapLazy;
-exports.createEvent = createEvent;
-exports.getElement = getElement;
-exports.h = h;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
+export { Host as H, bootstrapLazy as b, createEvent as c, getElement as g, h, promiseResolve as p, registerInstance as r };

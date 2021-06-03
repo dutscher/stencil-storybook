@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-af4d78b9.js');
+const index = require('./index-dcf8d4db.js');
 
 function format(first, middle, last) {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');

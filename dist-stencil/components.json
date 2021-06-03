@@ -1,5 +1,5 @@
 {
-  "timestamp": "2021-05-25T18:33:08",
+  "timestamp": "2021-06-03T12:03:40",
   "compiler": {
     "name": "@stencil/core",
     "version": "2.5.2",
@@ -48,6 +48,22 @@
           "required": false
         },
         {
+          "name": "maxFileSize",
+          "type": "any",
+          "mutable": false,
+          "attr": "max-file-size",
+          "reflectToAttr": false,
+          "docs": "Specify size limit in Kb",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "any"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
           "name": "middle",
           "type": "string",
           "mutable": false,
@@ -75,6 +91,22 @@
           "values": [
             {
               "type": "string"
+            }
+          ],
+          "optional": false,
+          "required": false
+        },
+        {
+          "name": "multilineShizzle",
+          "type": "boolean",
+          "mutable": false,
+          "attr": "multiline-shizzle",
+          "reflectToAttr": false,
+          "docs": "Yo im a multiline\ncan you see me?",
+          "docsTags": [],
+          "values": [
+            {
+              "type": "boolean"
             }
           ],
           "optional": false,

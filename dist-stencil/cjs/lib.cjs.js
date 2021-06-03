@@ -1,6 +1,6 @@
 'use strict';
 
-const index = require('./index-af4d78b9.js');
+const index = require('./index-dcf8d4db.js');
 
 /*
  Stencil Client Patch Browser v2.5.2 | MIT Licensed | https://stenciljs.com
@@ -15,5 +15,5 @@ const patchBrowser = () => {
 };
 
 patchBrowser().then(options => {
-  return index.bootstrapLazy([["my-component.cjs",[[4,"my-component",{"first":[1],"middle":[1],"last":[1],"modifier":[1]}]]]], options);
+  return index.bootstrapLazy([["my-component.cjs",[[4,"my-component",{"first":[1],"middle":[1],"last":[1],"modifier":[1],"maxFileSize":[8,"max-file-size"],"multilineShizzle":[4,"multiline-shizzle"]}]]]], options);
 });

@@ -1,4 +1,4 @@
-import { p as promiseResolve, b as bootstrapLazy } from './index-42bac8bc.js';
+import { p as promiseResolve, b as bootstrapLazy } from './index-0a3e91a1.js';
 
 /*
  Stencil Client Patch Browser v2.5.2 | MIT Licensed | https://stenciljs.com
@@ -13,5 +13,5 @@ const patchBrowser = () => {
 };
 
 patchBrowser().then(options => {
-  return bootstrapLazy([["my-component",[[4,"my-component",{"first":[1],"middle":[1],"last":[1],"modifier":[1]}]]]], options);
+  return bootstrapLazy([["my-component",[[4,"my-component",{"first":[1],"middle":[1],"last":[1],"modifier":[1],"maxFileSize":[8,"max-file-size"],"multilineShizzle":[4,"multiline-shizzle"]}]]]], options);
 });

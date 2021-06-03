@@ -16,6 +16,10 @@ export namespace Components {
          */
         "last": string;
         /**
+          * Specify size limit in Kb
+         */
+        "maxFileSize": any;
+        /**
           * Middle Prop
          */
         "middle": string;
@@ -23,6 +27,10 @@ export namespace Components {
           * Modifier Prop
          */
         "modifier": string;
+        /**
+          * Yo im a multiline can you see me?
+         */
+        "multilineShizzle": boolean;
     }
 }
 declare global {
@@ -47,6 +55,10 @@ declare namespace LocalJSX {
          */
         "last"?: string;
         /**
+          * Specify size limit in Kb
+         */
+        "maxFileSize"?: any;
+        /**
           * Middle Prop
          */
         "middle"?: string;
@@ -54,6 +66,10 @@ declare namespace LocalJSX {
           * Modifier Prop
          */
         "modifier"?: string;
+        /**
+          * Yo im a multiline can you see me?
+         */
+        "multilineShizzle"?: boolean;
         /**
           * Prevent
          */
