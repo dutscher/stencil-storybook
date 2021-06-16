@@ -2,6 +2,7 @@
   "name": "stencil-storybook",
   "beawareofchange": "change aswell scripts:build:storybook --static-dir",
   "version": "2.0.1",
+  "license": "MIT",
   "distDirs": {
     "stencil": "dist-stencil",
     "storybook": "dist-storybook",
@@ -100,16 +101,16 @@
   "jest": {
     "preset": "@stencil/core/testing"
   },
-  "author": [
-    {
-      "name": "André Bellmann",
-      "username": "ingomc",
-      "email": "janick2002@gmx.de"
-    },
+  "authors": [
     {
       "name": "Willy Woitas",
       "username": "dutscher",
       "email": "dutscher_sbf@hotmail.com"
+    },
+    {
+      "name": "André Bellmann",
+      "username": "ingomc",
+      "email": "janick2002@gmx.de"
     }
   ]
 }
