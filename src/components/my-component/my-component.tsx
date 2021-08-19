@@ -53,6 +53,7 @@ export class MyComponent {
       >
         Hello, World! I'm <span class={BEM(this, 'name')}> {this.getText()}</span>
         <slot />
+        <slot name="right" />
       </Host>
     );
   }
