@@ -25,7 +25,8 @@ export class MyComponent {
       h("span", { class: BEM(this, 'name') },
         " ",
         this.getText()),
-      h("slot", null)));
+      h("slot", null),
+      h("slot", { name: "right" })));
   }
   static get is() { return "my-component"; }
   static get originalStyleUrls() { return {

@@ -1,4 +1,4 @@
-import { g as getElement, r as registerInstance, c as createEvent, h, H as Host } from './index-0a3e91a1.js';
+import { g as getElement, r as registerInstance, c as createEvent, h, H as Host } from './index-c86a8937.js';
 
 function format(first, middle, last) {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -120,7 +120,7 @@ const MyComponent = class {
       componentName: this.componentName,
       modifier: this.modifier,
     });
-    return (h(Host, { class: `${cssClasses} dasdsa---dddsd container`, onClick: () => this.removeButtonResponse.emit({ test: 'test' }) }, "Hello, World! I'm ", h("span", { class: BEM(this, 'name') }, " ", this.getText()), h("slot", null)));
+    return (h(Host, { class: `${cssClasses} dasdsa---dddsd container`, onClick: () => this.removeButtonResponse.emit({ test: 'test' }) }, "Hello, World! I'm ", h("span", { class: BEM(this, 'name') }, " ", this.getText()), h("slot", null), h("slot", { name: "right" })));
   }
 };
 __decorate([

@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-const index = require('./index-dcf8d4db.js');
+const index = require('./index-2f723f1b.js');
 
 function format(first, middle, last) {
   return (first || '') + (middle ? ` ${middle}` : '') + (last ? ` ${last}` : '');
@@ -124,7 +124,7 @@ const MyComponent = class {
       componentName: this.componentName,
       modifier: this.modifier,
     });
-    return (index.h(index.Host, { class: `${cssClasses} dasdsa---dddsd container`, onClick: () => this.removeButtonResponse.emit({ test: 'test' }) }, "Hello, World! I'm ", index.h("span", { class: BEM(this, 'name') }, " ", this.getText()), index.h("slot", null)));
+    return (index.h(index.Host, { class: `${cssClasses} dasdsa---dddsd container`, onClick: () => this.removeButtonResponse.emit({ test: 'test' }) }, "Hello, World! I'm ", index.h("span", { class: BEM(this, 'name') }, " ", this.getText()), index.h("slot", null), index.h("slot", { name: "right" })));
   }
 };
 __decorate([

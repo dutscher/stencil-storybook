@@ -1,25 +1,3 @@
-'use strict';
-
-function _interopNamespace(e) {
-  if (e && e.__esModule) return e;
-  var n = Object.create(null);
-  if (e) {
-    Object.keys(e).forEach(function (k) {
-      if (k !== 'default') {
-        var d = Object.getOwnPropertyDescriptor(e, k);
-        Object.defineProperty(n, k, d.get ? d : {
-          enumerable: true,
-          get: function () {
-            return e[k];
-          }
-        });
-      }
-    });
-  }
-  n['default'] = e;
-  return Object.freeze(n);
-}
-
 const NAMESPACE = 'lib';
 
 let contentRef;
@@ -27,6 +5,7 @@ let hostTagName;
 let useNativeShadowDom = false;
 let checkSlotFallbackVisibility = false;
 let checkSlotRelocate = false;
+let isSvgMode = false;
 let queuePending = false;
 const win = typeof window !== 'undefined' ? window : {};
 const doc = win.document || { head: {} };
@@ -270,7 +249,42 @@ const setAccessor = (elm, memberName, oldValue, newValue, isSvg, flags) => {
                 plt.ael(elm, memberName, newValue, false);
             }
         }
-        else ;
+        else {
+            // Set property if it exists and it's not a SVG
+            const isComplex = isComplexType(newValue);
+            if ((isProp || (isComplex && newValue !== null)) && !isSvg) {
+                try {
+                    if (!elm.tagName.includes('-')) {
+                        let n = newValue == null ? '' : newValue;
+                        // Workaround for Safari, moving the <input> caret when re-assigning the same valued
+                        if (memberName === 'list') {
+                            isProp = false;
+                            // tslint:disable-next-line: triple-equals
+                        }
+                        else if (oldValue == null || elm[memberName] != n) {
+                            elm[memberName] = n;
+                        }
+                    }
+                    else {
+                        elm[memberName] = newValue;
+                    }
+                }
+                catch (e) { }
+            }
+            if (newValue == null || newValue === false) {
+                if (newValue !== false || elm.getAttribute(memberName) === '') {
+                    {
+                        elm.removeAttribute(memberName);
+                    }
+                }
+            }
+            else if ((!isProp || flags & 4 /* isHost */ || isSvg) && !isComplex) {
+                newValue = newValue === true ? '' : newValue;
+                {
+                    elm.setAttribute(memberName, newValue);
+                }
+            }
+        }
     }
 };
 const parseClassListRegex = /\s/;
@@ -286,13 +300,13 @@ const updateElement = (oldVnode, newVnode, isSvgMode, memberName) => {
         // remove attributes no longer present on the vnode by setting them to undefined
         for (memberName in oldVnodeAttrs) {
             if (!(memberName in newVnodeAttrs)) {
-                setAccessor(elm, memberName, oldVnodeAttrs[memberName], undefined);
+                setAccessor(elm, memberName, oldVnodeAttrs[memberName], undefined, isSvgMode, newVnode.$flags$);
             }
         }
     }
     // add new & update changed attributes
     for (memberName in newVnodeAttrs) {
-        setAccessor(elm, memberName, oldVnodeAttrs[memberName], newVnodeAttrs[memberName]);
+        setAccessor(elm, memberName, oldVnodeAttrs[memberName], newVnodeAttrs[memberName], isSvgMode, newVnode.$flags$);
     }
 };
 const createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
@@ -326,7 +340,7 @@ const createElm = (oldParentVNode, newParentVNode, childIndex, parentElm) => {
         elm = newVNode.$elm$ = (doc.createElement(newVNode.$flags$ & 2 /* isSlotFallback */ ? 'slot-fb' : newVNode.$tag$));
         // add css classes, attrs, props, listeners, etc.
         {
-            updateElement(null, newVNode);
+            updateElement(null, newVNode, isSvgMode);
         }
         if (newVNode.$children$) {
             for (i = 0; i < newVNode.$children$.length; ++i) {
@@ -529,7 +543,7 @@ const patch = (oldVNode, newVNode) => {
                 // either this is the first render of an element OR it's an update
                 // AND we already know it's possible it could have changed
                 // this updates the element's css classes, attrs, props, listeners, etc.
-                updateElement(oldVNode, newVNode);
+                updateElement(oldVNode, newVNode, isSvgMode);
             }
         }
         if (oldChildren !== null && newChildren !== null) {
@@ -1265,11 +1279,11 @@ const loadModule = (cmpMeta, hostRef, hmrVersionId) => {
     if (module) {
         return module[exportName];
     }
-    return Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(
+    return import(
     /* webpackInclude: /\.entry\.js$/ */
     /* webpackExclude: /\.system\.entry\.js$/ */
     /* webpackMode: "lazy" */
-    `./${bundleId}.entry.js${''}`)); }).then(importedModule => {
+    `./${bundleId}.entry.js${''}`).then(importedModule => {
         {
             cmpModules.set(bundleId, importedModule);
         }
@@ -1320,10 +1334,4 @@ const flush = () => {
 const nextTick = /*@__PURE__*/ (cb) => promiseResolve().then(cb);
 const writeTask = /*@__PURE__*/ queueTask(queueDomWrites, true);
 
-exports.Host = Host;
-exports.bootstrapLazy = bootstrapLazy;
-exports.createEvent = createEvent;
-exports.getElement = getElement;
-exports.h = h;
-exports.promiseResolve = promiseResolve;
-exports.registerInstance = registerInstance;
+export { Host as H, bootstrapLazy as b, createEvent as c, getElement as g, h, promiseResolve as p, registerInstance as r };
